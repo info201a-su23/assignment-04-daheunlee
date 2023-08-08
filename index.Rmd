@@ -5,21 +5,35 @@ output: html_document
 
 ### Introduction
 
-An introduction of the problem domain and a description of the variable(s) you are choosing to analyze (and why!)
+In the United States, the associated issues with incarceration has gained significant attention because of how it has impacted individuals, communities, and society as a whole. An important aspect of this problem that I have focused on is the disproportionately high number of individuals incarcerated, particularly among people of color, and the historical injustices that have perpetuated this disparity. 
 
 ### Summary Information
 
-Write a summary paragraph of findings that includes the 5 values calculated from your summary information R script
+After analyzing this dataset, the following statistics provide an initial overview of the incarceration data and offers a preview into the key variables that I have assessed on the disparities in incarceration rates based on race and gender. The dataset includes the following variables:
 
-These will likely be calculated using your DPLYR skills, answering questions such as: 
+*Total Jail Population Rate*
+This variable encapsulates the overall incarceration rate in jails per 100,000 people, offering a basic understanding of the extent of incarceration in different regions over time.
 
-- What is the average value of my variable across all the counties (in the current year)?
-- Where is my variable the highest / lowest?
-- How much has my variable change over the last N years?
+*White Jail Population Rate*
+The incarceration rate of White individuals in jails per 100,000 people. This variable serves as a baseline for comparison, allowing us to contrast the experiences of different racial groups
 
-Feel free to calculate and report values that you find relevant. Again, remember that the purpose is to think about how these measure of incarceration vary by race.
+*Black Jail Population Rate*
+The incarceration rate of Black individuals in jails per 100,000 people. This variable highlights the a critical racial disparity within the criminal justice system.
+
+*Latinx Jail Population Rate*
+The incarceration rate of Latinx individuals in jails per 100,000 people. This variable helps us recognize the unique challenges and inequalities faced by the Latinx community in the context of incarceration.
+
+*Female Jail Population Rate*
+The incarceration rate of females in jails per 100,000 people. Gender dynamics play an important role in understanding the distinct challenges that are faced by women within the criminal justice system.
+
+*Male Jail Population Rate*
+The incarceration rate of males in jails per 100,000 people. By contrasting the incarceration experiences of men and women, we can explore potential disparities and gender-specific factors contributing to incarceration rates.
+
 
 ### The Dataset
+
+prison_data <- read.csv("https://raw.githubusercontent.com/melaniewalsh/Neat-Datasets/main/us-prison-jail-rates-1990.csv")
+summary(prison_data)
 
 Who collected the data?  
 How was the data collected or generated?  
