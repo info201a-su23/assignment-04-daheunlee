@@ -9,7 +9,7 @@ In the United States, the associated issues with incarceration has gained signif
 
 ### Summary Information
 
-After analyzing this dataset, the following statistics provide an initial overview of the incarceration data and offers a preview into the key variables that I have assessed on the disparities in incarceration rates based on race and gender. The dataset includes the following variables:
+After analyzing this dataset, the following statistics provide an initial overview of the incarceration data and offers a preview into the key variables that I have assessed on the disparities in incarceration rates based on race and gender. The variables of focus that I have chosen to explore are:
 
 *Total Jail Population Rate*
 This variable encapsulates the overall incarceration rate in jails per 100,000 people, offering a basic understanding of the extent of incarceration in different regions over time.
@@ -21,13 +21,30 @@ The incarceration rate of White individuals in jails per 100,000 people. This va
 The incarceration rate of Black individuals in jails per 100,000 people. This variable highlights the a critical racial disparity within the criminal justice system.
 
 *Latinx Jail Population Rate*
-The incarceration rate of Latinx individuals in jails per 100,000 people. This variable helps us recognize the unique challenges and inequalities faced by the Latinx community in the context of incarceration.
+The incarceration rate of Latinx individuals in jails per 100,000 people. This variable helps to provide another example of the inequalities faced by the Latinx community in the context of incarceration.
 
 *Female Jail Population Rate*
 The incarceration rate of females in jails per 100,000 people. Gender dynamics play an important role in understanding the distinct challenges that are faced by women within the criminal justice system.
 
 *Male Jail Population Rate*
 The incarceration rate of males in jails per 100,000 people. By contrasting the incarceration experiences of men and women, we can explore potential disparities and gender-specific factors contributing to incarceration rates.
+
+The relevant values of interest that I have focused on are:
+
+*Average Total Jail Population Rate* 
+By calculating the average incarceration rate across all counties and states for the current year, we gain insight into the overall magnitude of the issue.
+
+*County with Highest Black Jail Population Rate* 
+By identifying the county with the highest Black jail population rate, we can see the localized instance of the racial disparities that occur.
+
+*County with Lowest White Jail Population Rate*
+By highlighting the county with the lowest White jail population rate, we are given an idea of potential variations in incarceration experiences.
+
+*Change in Latinx Jail Population Rate Over Last 10 Years*
+By figuring out the change in the Latinx jail population rate over the last decade, we discern trends that could lead to evolving dynamics within the criminal justice system.
+
+*Largest Disparity Between Male and Female Jail Population Rates*
+By calculating the county where the difference between male and female jail population rates is the most substantial, it is possible to figure out gender-specific factors impacting incarceration.
 
 
 ### The Dataset
