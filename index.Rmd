@@ -50,6 +50,7 @@ By calculating the county where the difference between male and female jail popu
 ### The Dataset
 
 prison_data <- read.csv("https://raw.githubusercontent.com/melaniewalsh/Neat-Datasets/main/us-prison-jail-rates-1990.csv")
+summary(prison_data)
 
 * Who collected the data?
 
@@ -82,20 +83,6 @@ Immediately, we can see that the dataset relies on reported data from jails and 
 
 ### Trends Over Time Chart
 
-Include a chart. Make sure to describe why you included the chart, and what patterns emerged
-
-The first chart that you will create and include will show the trend over time of your variable/topic. Think carefully about what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
-
-- Show more than one, but fewer than ~10 trends
-  - This may mean showing the same measure for different locations or different racial groups. Think carefully about a meaningful comparison of locations (e.g., the top 10 counties in a state, top 10 states, etc.)
-- You must have clear x and y axis labels
-- The chart needs a clear title 
-- You need a legend for your different line colors and a clear legend title
-
-When we say "clear" or "human readable" titles and labels, that means that you should not just display the variable name.
-
-Here's an example of how to run an R script inside an RMarkdown file:
-
 ``````{r, echo = FALSE}
 library(ggplot2)
 library(dplyr)
@@ -109,21 +96,25 @@ state_data <- prison_data %>%
   filter(state == selected_state) %>%
   select(year, black_jail_pop_rate, white_jail_pop_rate, latinx_jail_pop_rate)
 
+# Convert non-numeric values to NA
+state_data <- state_data %>%
+  mutate(across(black_jail_pop_rate:latinx_jail_pop_rate, as.numeric))
+
 # Reshape the data into long format
 state_data_long <- state_data %>%
   pivot_longer(cols = c(black_jail_pop_rate, white_jail_pop_rate, latinx_jail_pop_rate),
                names_to = "race",
-               values_to = "jail_pop_rate")
+               values_to = "jail_pop_rate") %>%
+  filter(!is.na(jail_pop_rate) & jail_pop_rate != 0)  # Exclude NA and 0 values
 
-# Create the trend over time chart with facets
+# Create the trend over time line plot
 ggplot(state_data_long, aes(x = year, y = jail_pop_rate, color = race)) +
   geom_line(size = 1) +
   labs(title = paste("Trends in Jail Population Rates by Race:", selected_state),
        x = "Year",
-       y = "Jail Population Rate per 100,000 People") +
-  scale_color_manual(values = c("black_jail_pop_rate" = "lavender", "latinx_jail_pop_rate" = "yellow", "white_jail_pop_rate" = "pink"),
-                     labels = c("Black", "Latinx", "White")) +
-  facet_wrap(vars(race), ncol = 1) +
+       y = "Jail Population Rate per 100,000 People",
+       color = "Race") +
+  scale_color_manual(values = c("black_jail_pop_rate" = "lavender", "latinx_jail_pop_rate" = "yellow", "white_jail_pop_rate" = "pink")) +
   theme_minimal()
 ```
 I created this chart to depict the trends in jail population rates based on race in the state of Washington over the years. It is meant to investigate disparities in the incarceration rates of Black, White, and Latinx individuals specifically. This visualization is to compare how incarceration rates have evolved for different racial groups in the state of Washington. By analyzing the trends in jail population rates, displaying complex interplay of systemic factors, policies, and social dynamics.
