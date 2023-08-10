@@ -50,7 +50,6 @@ By calculating the county where the difference between male and female jail popu
 ### The Dataset
 
 prison_data <- read.csv("https://raw.githubusercontent.com/melaniewalsh/Neat-Datasets/main/us-prison-jail-rates-1990.csv")
-summary(prison_data)
 
 * Who collected the data?
 
@@ -99,26 +98,43 @@ Here's an example of how to run an R script inside an RMarkdown file:
 
 ``````{r, echo = FALSE}
 library(ggplot2)
+library(dplyr)
+library(tidyr) 
 
-# Define the selected states
-selected_states <- c("Mississippi", "Louisiana", "Georgia", "New York")
+# Define the state of focus
+selected_state <- "WA"
 
-# Filter data for Black and White jail population rates
-black_white_data <- prison_data %>%
-  filter(state %in% selected_states) %>%
-  select(year, black_jail_pop_rate, white_jail_pop_rate)
+# Filter data for the selected state and relevant variables
+state_data <- prison_data %>%
+  filter(state == selected_state) %>%
+  select(year, black_jail_pop_rate, white_jail_pop_rate, latinx_jail_pop_rate)
 
-# Create the trends over time chart
-ggplot(black_white_data, aes(x = year)) +
-  geom_line(aes(y = black_jail_pop_rate, color = "Black")) +
-  geom_line(aes(y = white_jail_pop_rate, color = "White")) +
-  labs(title = "Trends in Jail Population Rates: Black vs. White",
+# Reshape the data into long format
+state_data_long <- state_data %>%
+  pivot_longer(cols = c(black_jail_pop_rate, white_jail_pop_rate, latinx_jail_pop_rate),
+               names_to = "race",
+               values_to = "jail_pop_rate")
+
+# Create the trend over time chart with facets
+ggplot(state_data_long, aes(x = year, y = jail_pop_rate, color = race)) +
+  geom_line(size = 1) +
+  labs(title = paste("Trends in Jail Population Rates by Race:", selected_state),
        x = "Year",
        y = "Jail Population Rate per 100,000 People") +
-  scale_color_manual(values = c("Black" = "blue", "White" = "red"),
-                     labels = c("Black", "White")) +
+  scale_color_manual(values = c("black_jail_pop_rate" = "lavender", "latinx_jail_pop_rate" = "yellow", "white_jail_pop_rate" = "pink"),
+                     labels = c("Black", "Latinx", "White")) +
+  facet_wrap(vars(race), ncol = 1) +
   theme_minimal()
 ```
+I created this chart to depict the trends in jail population rates based on race in the state of Washington over the years. It is meant to investigate disparities in the incarceration rates of Black, White, and Latinx individuals specifically. This visualization is to compare how incarceration rates have evolved for different racial groups in the state of Washington. By analyzing the trends in jail population rates, displaying complex interplay of systemic factors, policies, and social dynamics.
+
+Some of the patterns observed is that:
+
+* The line representing Black jail population rates show substantial fluctuations over the years. It is observed that the rates are consistently higher compared to other racial groups.
+
+* The Latinx jail population rates show moderate fluctuations, with some years experiencing slight increases while others show decreases. 
+
+* The White jail population rate remains relatively consistent over the years, indicating less variation compared to the Black population. 
 
 ### Variable Comparison Chart
 
