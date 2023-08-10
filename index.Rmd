@@ -84,38 +84,10 @@ Immediately, we can see that the dataset relies on reported data from jails and 
 ### Trends Over Time Chart
 
 ``````{r, echo = FALSE}
-library(ggplot2)
-library(dplyr)
-library(tidyr) 
+library(tidyverse)
+source("summary.R")
 
-# Define the state of focus
-selected_state <- "WA"
-
-# Filter data for the selected state and relevant variables
-state_data <- prison_data %>%
-  filter(state == selected_state) %>%
-  select(year, black_jail_pop_rate, white_jail_pop_rate, latinx_jail_pop_rate)
-
-# Convert non-numeric values to NA
-state_data <- state_data %>%
-  mutate(across(black_jail_pop_rate:latinx_jail_pop_rate, as.numeric))
-
-# Reshape the data into long format
-state_data_long <- state_data %>%
-  pivot_longer(cols = c(black_jail_pop_rate, white_jail_pop_rate, latinx_jail_pop_rate),
-               names_to = "race",
-               values_to = "jail_pop_rate") %>%
-  filter(!is.na(jail_pop_rate) & jail_pop_rate != 0)  # Exclude NA and 0 values
-
-# Create the trend over time line plot
-ggplot(state_data_long, aes(x = year, y = jail_pop_rate, color = race)) +
-  geom_line(size = 1) +
-  labs(title = paste("Trends in Jail Population Rates by Race:", selected_state),
-       x = "Year",
-       y = "Jail Population Rate per 100,000 People",
-       color = "Race") +
-  scale_color_manual(values = c("black_jail_pop_rate" = "lavender", "latinx_jail_pop_rate" = "yellow", "white_jail_pop_rate" = "pink")) +
-  theme_minimal()
+trends_chart
 ```
 I created this chart to depict the trends in jail population rates based on race in the state of Washington over the years. It is meant to investigate disparities in the incarceration rates of Black, White, and Latinx individuals specifically. This visualization is to compare how incarceration rates have evolved for different racial groups in the state of Washington. By analyzing the trends in jail population rates, displaying complex interplay of systemic factors, policies, and social dynamics.
 
@@ -129,22 +101,8 @@ Some of the patterns observed is that:
 
 ### Variable Comparison Chart
 
-Include a chart. Make sure to describe why you included the chart, and what patterns emerged
-
-The second chart that you will create and include will show how two different (continuous) variables are related to one another. Again, think carefully about what such a comparison means and what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
-
-- You must have clear x and y axis labels
-- The chart needs a clear title 
-- If you choose to add a color encoding (not required), you need a legend for your different color and a clear legend title
-
 ```{r, echo = FALSE}
-# Create the variable comparison chart
-ggplot(prison_data, aes(x = black_jail_pop_rate, y = white_jail_pop_rate)) +
-  geom_point(color = "purple", alpha = 0.5) +
-  labs(title = "Comparison of Black vs White Jail Population Rates",
-       x = "Black Jail Population Rate per 100,000 People",
-       y = "White Jail Population Rate per 100,000 People") +
-  theme_minimal()
+variable_chart
 ```
 
 This variable comparison chart displays a scatter plot comparing the Black jail population rate to the White jail population rate in order to investigate the relationship between the two. Each point represents a county, and the transparency (alpha) of the points helps to reveal the density of data points in different regions of the plot.
@@ -164,4 +122,8 @@ The last chart that you will create and include will show how a variable is dist
 - Your map needs a title
 - Your color scale needs a legend with a clear label
 - Use a map based coordinate system to set the aspect ratio of your map
+
+```{r, echo = FALSE}
+
+```
 
