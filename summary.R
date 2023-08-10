@@ -1,6 +1,7 @@
 library(ggplot2)
 library(dplyr)
 library(tidyr) 
+library(maps)
 
 prison_data <- read.csv("https://raw.githubusercontent.com/melaniewalsh/Neat-Datasets/main/us-prison-jail-rates-1990.csv")
 
@@ -40,3 +41,17 @@ variable_chart <- ggplot(prison_data, aes(x = black_jail_pop_rate, y = white_jai
        x = "Black Jail Population Rate per 100,000 People",
        y = "White Jail Population Rate per 100,000 People") +
   theme_minimal()
+
+# Create Map
+
+map_data("state")
+
+# Merge your data with the map data based on state names
+merged_data <- merge(map_data("state"), prison_data, by.x = "region", by.y = "state", all.x = TRUE)
+
+
+female_prison_map <- ggplot(merged_data, aes(x = long, y = lat, group = group, fill = female_prison_pop_rate)) +
+  geom_polygon() +
+  scale_fill_gradient(low = "white", high = "pink", name = "Female Prison Population Rate") +
+  labs(title = "Female Prison Population Rate by State") +
+  theme_void()

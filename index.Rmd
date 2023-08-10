@@ -86,6 +86,7 @@ source("summary.R")
 
 trends_chart
 ```
+
 I created this chart to depict the trends in jail population rates based on race in the state of Washington over the years. It is meant to investigate disparities in the incarceration rates of Black, White, and Latinx individuals specifically. This visualization is to compare how incarceration rates have evolved for different racial groups in the state of Washington. By analyzing the trends in jail population rates, displaying complex interplay of systemic factors, policies, and social dynamics.
 
 Some of the patterns observed is that:
@@ -112,12 +113,17 @@ Some of the patterns observed is that:
 
 ### Map
 
-Include a chart. Make sure to describe why you included the chart, and what patterns emerged
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
+female_prison_map
+```
 
-The last chart that you will create and include will show how a variable is distributed geographically. Again, think carefully about what such a comparison means and what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
+I included this map to provide a visual representation of the varying female prison population rates across different states in the United States. By mapping this data, we can quickly identify different patterns in the incarceration rates of females, which can offer valuable insights into the criminal justice system's treatment of women.
 
-- Your map needs a title
-- Your color scale needs a legend with a clear label
-- Use a map based coordinate system to set the aspect ratio of your map
+Patterns that SHOULD'VE been observed if this worked properly:
+
+* I would've liked to have seen the regional differences of female prison population rates. I would like to assume that there would have been varying results for each state and it would have been a good conversation starter as to what would cause such disparities between each state.
+
+* When glancing at the state summary and manually filtering the different populations within each state, I noticed that the urban areas tended to exhibit higher populations compared to the rural areas. 
+
 
 
