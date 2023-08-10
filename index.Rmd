@@ -86,6 +86,7 @@ Immediately, we can see that the dataset relies on reported data from jails and 
 ``````{r, echo = FALSE}
 library(tidyverse)
 source("summary.R")
+knitr::opts_chunk$set(echo = FALSE)
 
 trends_chart
 ```
@@ -123,7 +124,4 @@ The last chart that you will create and include will show how a variable is dist
 - Your color scale needs a legend with a clear label
 - Use a map based coordinate system to set the aspect ratio of your map
 
-```{r, echo = FALSE}
-
-```
 
