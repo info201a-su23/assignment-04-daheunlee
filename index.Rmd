@@ -52,13 +52,33 @@ By calculating the county where the difference between male and female jail popu
 prison_data <- read.csv("https://raw.githubusercontent.com/melaniewalsh/Neat-Datasets/main/us-prison-jail-rates-1990.csv")
 summary(prison_data)
 
-Who collected the data?  
-How was the data collected or generated?  
-Why was the data collected?  
-How many observations (rows) are in your data?  
-How many features (columns) are in the data?  
-What, if any, ethical questions or questions of power do you need to consider when working with this data?  
-What are possible limitations or problems with this data?   (at least 200 words)
+* Who collected the data?
+
+This data was collected by the Vera Institute of Justice, a nonprofit organization that aims to address issues within the criminal justice system. They're known for well-known for its research and data-driven approach to understanding and reforming the criminal justice system.
+
+* How was the data collected or generated?  
+
+The data was collected through a combination of Bureau of Justice Statistics (BJS) data collections, including the Census of Jails (COJ) and the Annual Survey of Jails (ASJ). Every 5 - 8 years the COJ covers all jails, while every non-census years the ASJ covers around one third of jails. This data is then collected from various jails around the US and added to the dataset.
+
+* Why was the data collected? 
+
+The data was collected to provide  insights into incarceration trends and disparities in the United States. The goal was to create a dataset that allows researchers, policymakers, and the public to understand the dynamics of incarceration, particularly within jails. The data helps share the factors contributing to high rates of incarceration and disparities based on race, gender, location, and other factors. 
+
+* How many observations (rows) are in your data?  
+
+There are a total of 91,031 observations in this dataset.
+
+* How many features (columns) are in the data?  
+
+There are a total 23 features in this datasset.
+
+* What, if any, ethical questions or questions of power do you need to consider when working with this data?  
+
+When working with incarceration data, ethical questions about privacy, consent, and potential biases can rise up. It's important to ensure that the data analysis and interpretation does not perpetuate stereotypes or stigmatize certain communities. Additionally, the power dynamics within the criminal justice system must also be considered, as data can reflect systemic injustices. 
+
+* What are possible limitations or problems with this data?
+
+Immediately, we can see that the dataset relies on reported data from jails and prisons. This might not always be accurately reported and does not reveal the entire scope of incarceration due to reporting inconsistencies The dataset might not capture nuances within demographic groups, and there could be underreporting of certain groups due to systemic factors. 
 
 
 ### Trends Over Time Chart
