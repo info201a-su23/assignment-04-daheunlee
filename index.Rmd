@@ -137,6 +137,24 @@ The second chart that you will create and include will show how two different (c
 - The chart needs a clear title 
 - If you choose to add a color encoding (not required), you need a legend for your different color and a clear legend title
 
+```{r, echo = FALSE}
+# Create the variable comparison chart
+ggplot(prison_data, aes(x = black_jail_pop_rate, y = white_jail_pop_rate)) +
+  geom_point(color = "purple", alpha = 0.5) +
+  labs(title = "Comparison of Black vs White Jail Population Rates",
+       x = "Black Jail Population Rate per 100,000 People",
+       y = "White Jail Population Rate per 100,000 People") +
+  theme_minimal()
+```
+
+This variable comparison chart displays a scatter plot comparing the Black jail population rate to the White jail population rate in order to investigate the relationship between the two. Each point represents a county, and the transparency (alpha) of the points helps to reveal the density of data points in different regions of the plot.
+
+Some of the patterns observed is that:
+
+* The positive correlation observed in the scatter plot suggests that, in general, as the Black jail population rate increases, the White jail population rate also tends to increase as well. This highlights that the two rates often follow similar trends within specific counties.
+
+* Some counties have notably higher incarceration rates compared to others, which can be seen as points that are far from the main cluster. These outliers might represent counties with unique characteristics that result in exceptionally high incarceration rates for both Black and White individuals.
+
 ### Map
 
 Include a chart. Make sure to describe why you included the chart, and what patterns emerged
