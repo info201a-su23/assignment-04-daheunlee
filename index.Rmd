@@ -97,7 +97,27 @@ When we say "clear" or "human readable" titles and labels, that means that you s
 
 Here's an example of how to run an R script inside an RMarkdown file:
 
-``````{r, echo = FALSE, code = readLines("chart1_example.R")}
+``````{r, echo = FALSE}
+library(ggplot2)
+
+# Define the selected states
+selected_states <- c("Mississippi", "Louisiana", "Georgia", "New York")
+
+# Filter data for Black and White jail population rates
+black_white_data <- prison_data %>%
+  filter(state %in% selected_states) %>%
+  select(year, black_jail_pop_rate, white_jail_pop_rate)
+
+# Create the trends over time chart
+ggplot(black_white_data, aes(x = year)) +
+  geom_line(aes(y = black_jail_pop_rate, color = "Black")) +
+  geom_line(aes(y = white_jail_pop_rate, color = "White")) +
+  labs(title = "Trends in Jail Population Rates: Black vs. White",
+       x = "Year",
+       y = "Jail Population Rate per 100,000 People") +
+  scale_color_manual(values = c("Black" = "blue", "White" = "red"),
+                     labels = c("Black", "White")) +
+  theme_minimal()
 ```
 
 ### Variable Comparison Chart
