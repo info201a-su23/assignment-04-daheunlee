@@ -2,6 +2,8 @@ library(ggplot2)
 library(dplyr)
 library(tidyr) 
 
+prison_data <- read.csv("https://raw.githubusercontent.com/melaniewalsh/Neat-Datasets/main/us-prison-jail-rates-1990.csv")
+
 # Define the state of focus
 selected_state <- "WA"
 

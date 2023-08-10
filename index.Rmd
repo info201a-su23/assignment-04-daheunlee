@@ -49,9 +49,6 @@ By calculating the county where the difference between male and female jail popu
 
 ### The Dataset
 
-prison_data <- read.csv("https://raw.githubusercontent.com/melaniewalsh/Neat-Datasets/main/us-prison-jail-rates-1990.csv")
-summary(prison_data)
-
 * Who collected the data?
 
 This data was collected by the Vera Institute of Justice, a nonprofit organization that aims to address issues within the criminal justice system. They're known for well-known for its research and data-driven approach to understanding and reforming the criminal justice system.
@@ -83,7 +80,7 @@ Immediately, we can see that the dataset relies on reported data from jails and 
 
 ### Trends Over Time Chart
 
-``````{r, echo = FALSE}
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
 library(tidyverse)
 source("summary.R")
 
@@ -101,7 +98,7 @@ Some of the patterns observed is that:
 
 ### Variable Comparison Chart
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
 variable_chart
 ```
 
